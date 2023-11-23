@@ -1,4 +1,4 @@
-package com.simplemobiletools.notes.pro.helpers
+package com.ncautomation.notes.pro.helpers
 
 import android.graphics.Color
 import org.joda.time.DateTime

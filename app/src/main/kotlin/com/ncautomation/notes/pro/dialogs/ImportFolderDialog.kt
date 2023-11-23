@@ -1,17 +1,17 @@
-package com.simplemobiletools.notes.pro.dialogs
+package com.ncautomation.notes.pro.dialogs
 
 import androidx.appcompat.app.AlertDialog
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.PROTECTION_NONE
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import com.simplemobiletools.notes.pro.R
-import com.simplemobiletools.notes.pro.activities.SimpleActivity
-import com.simplemobiletools.notes.pro.databinding.DialogImportFolderBinding
-import com.simplemobiletools.notes.pro.extensions.notesDB
-import com.simplemobiletools.notes.pro.extensions.parseChecklistItems
-import com.simplemobiletools.notes.pro.helpers.NotesHelper
-import com.simplemobiletools.notes.pro.models.Note
-import com.simplemobiletools.notes.pro.models.NoteType
+import com.ncautomation.commons.extensions.*
+import com.ncautomation.commons.helpers.PROTECTION_NONE
+import com.ncautomation.commons.helpers.ensureBackgroundThread
+import com.ncautomation.notes.pro.R
+import com.ncautomation.notes.pro.activities.SimpleActivity
+import com.ncautomation.notes.pro.databinding.DialogImportFolderBinding
+import com.ncautomation.notes.pro.extensions.notesDB
+import com.ncautomation.notes.pro.extensions.parseChecklistItems
+import com.ncautomation.notes.pro.helpers.NotesHelper
+import com.ncautomation.notes.pro.models.Note
+import com.ncautomation.notes.pro.models.NoteType
 import java.io.File
 
 class ImportFolderDialog(val activity: SimpleActivity, val path: String, val callback: () -> Unit) : AlertDialog.Builder(activity) {
@@ -23,8 +23,8 @@ class ImportFolderDialog(val activity: SimpleActivity, val path: String, val cal
         }
 
         activity.getAlertDialogBuilder()
-            .setPositiveButton(com.simplemobiletools.commons.R.string.ok, null)
-            .setNegativeButton(com.simplemobiletools.commons.R.string.cancel, null)
+            .setPositiveButton(com.ncautomation.commons.R.string.ok, null)
+            .setNegativeButton(com.ncautomation.commons.R.string.cancel, null)
             .apply {
                 activity.setupDialogStuff(binding.root, this, R.string.import_folder) { alertDialog ->
                     dialog = alertDialog

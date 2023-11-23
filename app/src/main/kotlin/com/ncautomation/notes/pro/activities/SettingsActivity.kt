@@ -1,4 +1,4 @@
-package com.simplemobiletools.notes.pro.activities
+package com.ncautomation.notes.pro.activities
 
 import android.content.Intent
 import android.net.Uri
@@ -7,18 +7,18 @@ import android.view.Menu
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.text.TextUtilsCompat
 import androidx.core.view.ViewCompat
-import com.simplemobiletools.commons.dialogs.RadioGroupDialog
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.*
-import com.simplemobiletools.commons.models.RadioItem
-import com.simplemobiletools.notes.pro.R
-import com.simplemobiletools.notes.pro.databinding.ActivitySettingsBinding
-import com.simplemobiletools.notes.pro.dialogs.ExportNotesDialog
-import com.simplemobiletools.notes.pro.dialogs.ManageAutoBackupsDialog
-import com.simplemobiletools.notes.pro.extensions.*
-import com.simplemobiletools.notes.pro.helpers.*
-import com.simplemobiletools.notes.pro.models.Note
-import com.simplemobiletools.notes.pro.models.Widget
+import com.ncautomation.commons.dialogs.RadioGroupDialog
+import com.ncautomation.commons.extensions.*
+import com.ncautomation.commons.helpers.*
+import com.ncautomation.commons.models.RadioItem
+import com.ncautomation.notes.pro.R
+import com.ncautomation.notes.pro.databinding.ActivitySettingsBinding
+import com.ncautomation.notes.pro.dialogs.ExportNotesDialog
+import com.ncautomation.notes.pro.dialogs.ManageAutoBackupsDialog
+import com.ncautomation.notes.pro.extensions.*
+import com.ncautomation.notes.pro.helpers.*
+import com.ncautomation.notes.pro.models.Note
+import com.ncautomation.notes.pro.models.Widget
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
@@ -84,14 +84,14 @@ class SettingsActivity : SimpleActivity() {
 
     private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         if (uri != null) {
-            toast(com.simplemobiletools.commons.R.string.importing)
+            toast(com.ncautomation.commons.R.string.importing)
             importNotes(uri)
         }
     }
 
     private val saveDocument = registerForActivityResult(ActivityResultContracts.CreateDocument(notesFileType)) { uri ->
         if (uri != null) {
-            toast(com.simplemobiletools.commons.R.string.exporting)
+            toast(com.ncautomation.commons.R.string.exporting)
             NotesHelper(this).getNotes { notes ->
                 requestUnlockNotes(notes) { unlockedNotes ->
                     val notLockedNotes = notes.filterNot { it.isLocked() }
@@ -314,7 +314,7 @@ class SettingsActivity : SimpleActivity() {
 
     private fun exportNotes(notes: List<Note>, uri: Uri) {
         if (notes.isEmpty()) {
-            toast(com.simplemobiletools.commons.R.string.no_entries_for_exporting)
+            toast(com.ncautomation.commons.R.string.no_entries_for_exporting)
         } else {
             try {
                 val outputStream = contentResolver.openOutputStream(uri)!!
@@ -323,7 +323,7 @@ class SettingsActivity : SimpleActivity() {
                 outputStream.use {
                     it.write(jsonString.toByteArray())
                 }
-                toast(com.simplemobiletools.commons.R.string.exporting_successful)
+                toast(com.ncautomation.commons.R.string.exporting_successful)
             } catch (e: Exception) {
                 showErrorToast(e)
             }
@@ -337,21 +337,21 @@ class SettingsActivity : SimpleActivity() {
             }
             val objects = Json.decodeFromString<List<Note>>(jsonString)
             if (objects.isEmpty()) {
-                toast(com.simplemobiletools.commons.R.string.no_entries_for_importing)
+                toast(com.ncautomation.commons.R.string.no_entries_for_importing)
                 return
             }
             NotesHelper(this).importNotes(this, objects) { importResult ->
                 when (importResult) {
-                    NotesHelper.ImportResult.IMPORT_OK -> toast(com.simplemobiletools.commons.R.string.importing_successful)
-                    NotesHelper.ImportResult.IMPORT_PARTIAL -> toast(com.simplemobiletools.commons.R.string.importing_some_entries_failed)
-                    NotesHelper.ImportResult.IMPORT_NOTHING_NEW -> toast(com.simplemobiletools.commons.R.string.no_new_items)
-                    else -> toast(com.simplemobiletools.commons.R.string.importing_failed)
+                    NotesHelper.ImportResult.IMPORT_OK -> toast(com.ncautomation.commons.R.string.importing_successful)
+                    NotesHelper.ImportResult.IMPORT_PARTIAL -> toast(com.ncautomation.commons.R.string.importing_some_entries_failed)
+                    NotesHelper.ImportResult.IMPORT_NOTHING_NEW -> toast(com.ncautomation.commons.R.string.no_new_items)
+                    else -> toast(com.ncautomation.commons.R.string.importing_failed)
                 }
             }
         } catch (_: SerializationException) {
-            toast(com.simplemobiletools.commons.R.string.invalid_file_format)
+            toast(com.ncautomation.commons.R.string.invalid_file_format)
         } catch (_: IllegalArgumentException) {
-            toast(com.simplemobiletools.commons.R.string.invalid_file_format)
+            toast(com.ncautomation.commons.R.string.invalid_file_format)
         } catch (e: Exception) {
             showErrorToast(e)
         }

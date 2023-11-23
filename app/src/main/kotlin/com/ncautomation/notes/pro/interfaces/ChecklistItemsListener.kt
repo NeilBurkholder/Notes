@@ -1,4 +1,4 @@
-package com.simplemobiletools.notes.pro.interfaces
+package com.ncautomation.notes.pro.interfaces
 
 interface ChecklistItemsListener {
     fun refreshItems()

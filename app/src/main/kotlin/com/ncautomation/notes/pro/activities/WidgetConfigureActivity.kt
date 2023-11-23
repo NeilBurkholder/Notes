@@ -1,4 +1,4 @@
-package com.simplemobiletools.notes.pro.activities
+package com.ncautomation.notes.pro.activities
 
 import android.app.Activity
 import android.appwidget.AppWidgetManager
@@ -12,24 +12,24 @@ import android.util.TypedValue
 import android.widget.RemoteViews
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.simplemobiletools.commons.dialogs.ColorPickerDialog
-import com.simplemobiletools.commons.dialogs.RadioGroupDialog
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.IS_CUSTOMIZING_COLORS
-import com.simplemobiletools.commons.helpers.PROTECTION_NONE
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import com.simplemobiletools.commons.models.RadioItem
-import com.simplemobiletools.notes.pro.R
-import com.simplemobiletools.notes.pro.adapters.ChecklistAdapter
-import com.simplemobiletools.notes.pro.databinding.WidgetConfigBinding
-import com.simplemobiletools.notes.pro.extensions.config
-import com.simplemobiletools.notes.pro.extensions.getPercentageFontSize
-import com.simplemobiletools.notes.pro.extensions.widgetsDB
-import com.simplemobiletools.notes.pro.helpers.*
-import com.simplemobiletools.notes.pro.models.ChecklistItem
-import com.simplemobiletools.notes.pro.models.Note
-import com.simplemobiletools.notes.pro.models.NoteType
-import com.simplemobiletools.notes.pro.models.Widget
+import com.ncautomation.commons.dialogs.ColorPickerDialog
+import com.ncautomation.commons.dialogs.RadioGroupDialog
+import com.ncautomation.commons.extensions.*
+import com.ncautomation.commons.helpers.IS_CUSTOMIZING_COLORS
+import com.ncautomation.commons.helpers.PROTECTION_NONE
+import com.ncautomation.commons.helpers.ensureBackgroundThread
+import com.ncautomation.commons.models.RadioItem
+import com.ncautomation.notes.pro.R
+import com.ncautomation.notes.pro.adapters.ChecklistAdapter
+import com.ncautomation.notes.pro.databinding.WidgetConfigBinding
+import com.ncautomation.notes.pro.extensions.config
+import com.ncautomation.notes.pro.extensions.getPercentageFontSize
+import com.ncautomation.notes.pro.extensions.widgetsDB
+import com.ncautomation.notes.pro.helpers.*
+import com.ncautomation.notes.pro.models.ChecklistItem
+import com.ncautomation.notes.pro.models.Note
+import com.ncautomation.notes.pro.models.NoteType
+import com.ncautomation.notes.pro.models.Widget
 
 class WidgetConfigureActivity : SimpleActivity() {
     private var mBgAlpha = 0f
@@ -88,8 +88,8 @@ class WidgetConfigureActivity : SimpleActivity() {
             mShowTitle = extras?.getBoolean(CUSTOMIZED_WIDGET_SHOW_TITLE) ?: false
         }
 
-        if (mTextColor == resources.getColor(com.simplemobiletools.commons.R.color.default_widget_text_color) && config.isUsingSystemTheme) {
-            mTextColor = resources.getColor(com.simplemobiletools.commons.R.color.you_primary_color, theme)
+        if (mTextColor == resources.getColor(com.ncautomation.commons.R.color.default_widget_text_color) && config.isUsingSystemTheme) {
+            mTextColor = resources.getColor(com.ncautomation.commons.R.color.you_primary_color, theme)
         }
 
         mBgAlpha = Color.alpha(mBgColor) / 255.toFloat()

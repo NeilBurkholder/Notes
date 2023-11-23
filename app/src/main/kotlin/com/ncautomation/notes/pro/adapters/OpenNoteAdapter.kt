@@ -1,4 +1,4 @@
-package com.simplemobiletools.notes.pro.adapters
+package com.ncautomation.notes.pro.adapters
 
 import android.content.Context
 import android.graphics.Color
@@ -9,20 +9,20 @@ import android.view.View
 import android.view.ViewGroup
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.simplemobiletools.commons.activities.BaseSimpleActivity
-import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
-import com.simplemobiletools.commons.extensions.beGoneIf
-import com.simplemobiletools.commons.extensions.beVisibleIf
-import com.simplemobiletools.commons.extensions.getColoredDrawableWithColor
-import com.simplemobiletools.commons.extensions.isBlackAndWhiteTheme
-import com.simplemobiletools.commons.helpers.LOWER_ALPHA_INT
-import com.simplemobiletools.commons.helpers.SORT_BY_CUSTOM
-import com.simplemobiletools.commons.views.MyRecyclerView
-import com.simplemobiletools.notes.pro.databinding.OpenNoteItemBinding
-import com.simplemobiletools.notes.pro.extensions.config
-import com.simplemobiletools.notes.pro.models.ChecklistItem
-import com.simplemobiletools.notes.pro.models.Note
-import com.simplemobiletools.notes.pro.models.NoteType
+import com.ncautomation.commons.activities.BaseSimpleActivity
+import com.ncautomation.commons.adapters.MyRecyclerViewAdapter
+import com.ncautomation.commons.extensions.beGoneIf
+import com.ncautomation.commons.extensions.beVisibleIf
+import com.ncautomation.commons.extensions.getColoredDrawableWithColor
+import com.ncautomation.commons.extensions.isBlackAndWhiteTheme
+import com.ncautomation.commons.helpers.LOWER_ALPHA_INT
+import com.ncautomation.commons.helpers.SORT_BY_CUSTOM
+import com.ncautomation.commons.views.MyRecyclerView
+import com.ncautomation.notes.pro.databinding.OpenNoteItemBinding
+import com.ncautomation.notes.pro.extensions.config
+import com.ncautomation.notes.pro.models.ChecklistItem
+import com.ncautomation.notes.pro.models.Note
+import com.ncautomation.notes.pro.models.NoteType
 
 class OpenNoteAdapter(
     activity: BaseSimpleActivity, var items: List<Note>,
@@ -70,7 +70,7 @@ class OpenNoteAdapter(
             val formattedText = note.getFormattedValue(root.context)
             openNoteItemText.beGoneIf(formattedText.isNullOrBlank() || note.isLocked())
             iconLock.beVisibleIf(note.isLocked())
-            iconLock.setImageDrawable(activity.resources.getColoredDrawableWithColor(com.simplemobiletools.commons.R.drawable.ic_lock_vector, properPrimaryColor))
+            iconLock.setImageDrawable(activity.resources.getColoredDrawableWithColor(com.ncautomation.commons.R.drawable.ic_lock_vector, properPrimaryColor))
             openNoteItemText.apply {
                 text = formattedText
                 setTextColor(textColor)
@@ -80,7 +80,7 @@ class OpenNoteAdapter(
 
     private fun View.setupCard() {
         if (context.isBlackAndWhiteTheme()) {
-            setBackgroundResource(com.simplemobiletools.commons.R.drawable.black_dialog_background)
+            setBackgroundResource(com.ncautomation.commons.R.drawable.black_dialog_background)
         } else {
             val cardBackgroundColor = if (backgroundColor == Color.BLACK) {
                 Color.WHITE
@@ -88,9 +88,9 @@ class OpenNoteAdapter(
                 Color.BLACK
             }
             val cardBackground = if (context.config.isUsingSystemTheme) {
-                com.simplemobiletools.commons.R.drawable.dialog_you_background
+                com.ncautomation.commons.R.drawable.dialog_you_background
             } else {
-                com.simplemobiletools.commons.R.drawable.dialog_bg
+                com.ncautomation.commons.R.drawable.dialog_bg
             }
             background =
                 activity.resources.getColoredDrawableWithColor(cardBackground, cardBackgroundColor, LOWER_ALPHA_INT)

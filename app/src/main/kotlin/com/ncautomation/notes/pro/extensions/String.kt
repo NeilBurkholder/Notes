@@ -1,8 +1,8 @@
-package com.simplemobiletools.notes.pro.extensions
+package com.ncautomation.notes.pro.extensions
 
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.simplemobiletools.notes.pro.models.ChecklistItem
+import com.ncautomation.notes.pro.models.ChecklistItem
 
 fun String.parseChecklistItems(): ArrayList<ChecklistItem>? {
     if (startsWith("[{") && endsWith("}]")) {

@@ -1,4 +1,4 @@
-package com.simplemobiletools.notes.pro.views
+package com.ncautomation.notes.pro.views
 
 import android.content.Context
 import android.util.AttributeSet

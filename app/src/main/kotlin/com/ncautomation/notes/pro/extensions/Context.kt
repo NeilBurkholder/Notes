@@ -1,4 +1,4 @@
-package com.simplemobiletools.notes.pro.extensions
+package com.ncautomation.notes.pro.extensions
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -7,19 +7,19 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import androidx.core.app.AlarmManagerCompat
-import com.simplemobiletools.commons.activities.BaseSimpleActivity
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.ExportResult
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import com.simplemobiletools.commons.helpers.isRPlus
-import com.simplemobiletools.notes.pro.R
-import com.simplemobiletools.notes.pro.databases.NotesDatabase
-import com.simplemobiletools.notes.pro.dialogs.UnlockNotesDialog
-import com.simplemobiletools.notes.pro.helpers.*
-import com.simplemobiletools.notes.pro.interfaces.NotesDao
-import com.simplemobiletools.notes.pro.interfaces.WidgetsDao
-import com.simplemobiletools.notes.pro.models.Note
-import com.simplemobiletools.notes.pro.receivers.AutomaticBackupReceiver
+import com.ncautomation.commons.activities.BaseSimpleActivity
+import com.ncautomation.commons.extensions.*
+import com.ncautomation.commons.helpers.ExportResult
+import com.ncautomation.commons.helpers.ensureBackgroundThread
+import com.ncautomation.commons.helpers.isRPlus
+import com.ncautomation.notes.pro.R
+import com.ncautomation.notes.pro.databases.NotesDatabase
+import com.ncautomation.notes.pro.dialogs.UnlockNotesDialog
+import com.ncautomation.notes.pro.helpers.*
+import com.ncautomation.notes.pro.interfaces.NotesDao
+import com.ncautomation.notes.pro.interfaces.WidgetsDao
+import com.ncautomation.notes.pro.models.Note
+import com.ncautomation.notes.pro.receivers.AutomaticBackupReceiver
 import org.joda.time.DateTime
 import java.io.File
 import java.io.FileOutputStream
@@ -41,7 +41,7 @@ fun Context.updateWidgets() {
     }
 }
 
-fun Context.getPercentageFontSize() = resources.getDimension(com.simplemobiletools.commons.R.dimen.middle_text_size) * (config.fontSizePercentage / 100f)
+fun Context.getPercentageFontSize() = resources.getDimension(com.ncautomation.commons.R.dimen.middle_text_size) * (config.fontSizePercentage / 100f)
 
 fun BaseSimpleActivity.requestUnlockNotes(notes: List<Note>, callback: (unlockedNotes: List<Note>) -> Unit) {
     val lockedNotes = notes.filter { it.isLocked() }
@@ -95,7 +95,7 @@ fun Context.backupNotes() {
         val config = config
         NotesHelper(this).getNotes { notesToBackup ->
             if (notesToBackup.isEmpty()) {
-                toast(com.simplemobiletools.commons.R.string.no_entries_for_exporting)
+                toast(com.ncautomation.commons.R.string.no_entries_for_exporting)
                 config.lastAutoBackupTime = DateTime.now().millis
                 scheduleNextAutomaticBackup()
                 return@getNotes
@@ -153,7 +153,7 @@ fun Context.backupNotes() {
             }
 
             if (exportResult == ExportResult.EXPORT_FAIL) {
-                toast(com.simplemobiletools.commons.R.string.exporting_failed)
+                toast(com.ncautomation.commons.R.string.exporting_failed)
             }
 
             config.lastAutoBackupTime = DateTime.now().millis

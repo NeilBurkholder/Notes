@@ -1,4 +1,4 @@
-package com.simplemobiletools.notes.pro.activities
+package com.ncautomation.notes.pro.activities
 
 import android.accounts.NetworkErrorException
 import android.annotation.SuppressLint
@@ -28,30 +28,32 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.viewpager.widget.ViewPager
-import com.simplemobiletools.commons.dialogs.*
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.*
-import com.simplemobiletools.commons.models.FAQItem
-import com.simplemobiletools.commons.models.FileDirItem
-import com.simplemobiletools.commons.models.RadioItem
-import com.simplemobiletools.commons.models.Release
-import com.simplemobiletools.commons.views.MyEditText
-import com.simplemobiletools.notes.pro.BuildConfig
-import com.simplemobiletools.notes.pro.R
-import com.simplemobiletools.notes.pro.adapters.NotesPagerAdapter
-import com.simplemobiletools.notes.pro.databases.NotesDatabase
-import com.simplemobiletools.notes.pro.databinding.ActivityMainBinding
-import com.simplemobiletools.notes.pro.dialogs.*
-import com.simplemobiletools.notes.pro.extensions.*
-import com.simplemobiletools.notes.pro.fragments.TextFragment
-import com.simplemobiletools.notes.pro.helpers.*
-import com.simplemobiletools.notes.pro.models.Note
-import com.simplemobiletools.notes.pro.models.NoteType
+import com.ncautomation.commons.dialogs.*
+import com.ncautomation.commons.extensions.*
+import com.ncautomation.commons.helpers.*
+import com.ncautomation.commons.models.FAQItem
+import com.ncautomation.commons.models.FileDirItem
+import com.ncautomation.commons.models.RadioItem
+import com.ncautomation.commons.models.Release
+import com.ncautomation.commons.views.MyEditText
+import com.ncautomation.notes.pro.BuildConfig
+import com.ncautomation.notes.pro.R
+import com.ncautomation.notes.pro.adapters.NotesPagerAdapter
+import com.ncautomation.notes.pro.databases.NotesDatabase
+import com.ncautomation.notes.pro.databinding.ActivityMainBinding
+import com.ncautomation.notes.pro.dialogs.*
+import com.ncautomation.notes.pro.extensions.*
+import com.ncautomation.notes.pro.fragments.TextFragment
+import com.ncautomation.notes.pro.helpers.*
+import com.ncautomation.notes.pro.models.Note
+import com.ncautomation.notes.pro.models.NoteType
 import java.io.File
 import java.nio.charset.Charset
 import java.util.*
+import com.ncautomation.notes.pro.views.*
+//import com.ncautomation.notes.pro.
 
-class MainActivity : SimpleActivity() {
+class MainActivity : com.ncautomation.notes.pro.activities.SimpleActivity() {
     private val EXPORT_FILE_SYNC = 1
     private val EXPORT_FILE_NO_SYNC = 2
 
@@ -87,16 +89,16 @@ class MainActivity : SimpleActivity() {
         isMaterialActivity = true
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        appLaunched(BuildConfig.APPLICATION_ID)
+        appLaunched(com.ncautomation.notes.pro.BuildConfig.APPLICATION_ID)
         setupOptionsMenu()
         refreshMenuItems()
 
         updateMaterialActivityViews(binding.mainCoordinator, null, useTransparentNavigation = false, useTopSearchMenu = false)
 
-        searchQueryET = findViewById(com.simplemobiletools.commons.R.id.search_query)
-        searchPrevBtn = findViewById(com.simplemobiletools.commons.R.id.search_previous)
-        searchNextBtn = findViewById(com.simplemobiletools.commons.R.id.search_next)
-        searchClearBtn = findViewById(com.simplemobiletools.commons.R.id.search_clear)
+        searchQueryET = findViewById(com.ncautomation.commons.R.id.search_query)
+        searchPrevBtn = findViewById(com.ncautomation.commons.R.id.search_previous)
+        searchNextBtn = findViewById(com.ncautomation.commons.R.id.search_next)
+        searchClearBtn = findViewById(com.ncautomation.commons.R.id.search_clear)
 
         val noteToOpen = intent.getLongExtra(OPEN_NOTE_ID, -1L)
         initViewPager(noteToOpen)
@@ -104,7 +106,7 @@ class MainActivity : SimpleActivity() {
         val textSize = getPercentageFontSize()
         binding.pagerTabStrip.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize)
         binding.pagerTabStrip.layoutParams.height =
-            (textSize + resources.getDimension(com.simplemobiletools.commons.R.dimen.medium_margin) * 2).toInt()
+            (textSize + resources.getDimension(com.ncautomation.commons.R.dimen.medium_margin) * 2).toInt()
         (binding.pagerTabStrip.layoutParams as ViewPager.LayoutParams).isDecor = true
 
         val hasNoIntent = intent.action.isNullOrEmpty() && noteToOpen == -1L
@@ -122,9 +124,9 @@ class MainActivity : SimpleActivity() {
         checkAppOnSDCard()
         setupSearchButtons()
 
-        if (isPackageInstalled("com.simplemobiletools.notes")) {
-            val dialogText = getString(com.simplemobiletools.commons.R.string.upgraded_from_free_notes)
-            ConfirmationDialog(this, dialogText, 0, com.simplemobiletools.commons.R.string.ok, 0, false) {}
+        if (isPackageInstalled("com.ncautomation.notes")) {
+            val dialogText = getString(com.ncautomation.commons.R.string.upgraded_from_free_notes)
+            ConfirmationDialog(this, dialogText, 0, com.ncautomation.commons.R.string.ok, 0, false) {}
         }
     }
 
@@ -146,7 +148,7 @@ class MainActivity : SimpleActivity() {
             val textSize = getPercentageFontSize()
             setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize)
             layoutParams.height =
-                (textSize + resources.getDimension(com.simplemobiletools.commons.R.dimen.medium_margin) * 2).toInt()
+                (textSize + resources.getDimension(com.ncautomation.commons.R.dimen.medium_margin) * 2).toInt()
             setGravity(Gravity.CENTER_VERTICAL)
             setNonPrimaryAlpha(0.4f)
             setTextColor(getProperPrimaryColor())
@@ -156,7 +158,7 @@ class MainActivity : SimpleActivity() {
 
         checkShortcuts()
 
-        binding.searchWrapper.setBackgroundColor(getProperStatusBarColor())
+        binding.searchWrapper.root.setBackgroundColor(getProperStatusBarColor())
         val contrastColor = getProperPrimaryColor().getContrastColor()
         arrayListOf(searchPrevBtn, searchNextBtn, searchClearBtn).forEach {
             it.applyColorFilter(contrastColor)
@@ -201,7 +203,7 @@ class MainActivity : SimpleActivity() {
             findItem(R.id.import_folder).isVisible = !isQPlus()
             findItem(R.id.lock_note).isVisible = mNotes.isNotEmpty() && (::mCurrentNote.isInitialized && !mCurrentNote.isLocked())
             findItem(R.id.unlock_note).isVisible = mNotes.isNotEmpty() && (::mCurrentNote.isInitialized && mCurrentNote.isLocked())
-            findItem(R.id.more_apps_from_us).isVisible = !resources.getBoolean(com.simplemobiletools.commons.R.bool.hide_google_relations)
+            findItem(R.id.more_apps_from_us).isVisible = false
 
             saveNoteButton = findItem(R.id.save_note)
             saveNoteButton!!.isVisible =
@@ -272,8 +274,8 @@ class MainActivity : SimpleActivity() {
                 this,
                 "",
                 R.string.unsaved_changes_warning,
-                com.simplemobiletools.commons.R.string.save,
-                com.simplemobiletools.commons.R.string.discard
+                com.ncautomation.commons.R.string.save,
+                com.ncautomation.commons.R.string.discard
             ) {
                 if (it) {
                     mAdapter?.saveAllFragmentTexts()
@@ -326,11 +328,11 @@ class MainActivity : SimpleActivity() {
     private fun getNewTextNoteShortcut(appIconColor: Int): ShortcutInfo {
         val shortLabel = getString(R.string.text_note)
         val longLabel = getString(R.string.new_text_note)
-        val drawable = resources.getDrawable(com.simplemobiletools.commons.R.drawable.shortcut_plus)
+        val drawable = resources.getDrawable(com.ncautomation.commons.R.drawable.shortcut_plus)
         (drawable as LayerDrawable).findDrawableByLayerId(R.id.shortcut_plus_background).applyColorFilter(appIconColor)
         val bmp = drawable.convertToBitmap()
 
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, com.ncautomation.notes.pro.activities.MainActivity::class.java)
         intent.action = Intent.ACTION_VIEW
         intent.putExtra(NEW_TEXT_NOTE, true)
         return ShortcutInfo.Builder(this, SHORTCUT_NEW_TEXT_NOTE)
@@ -349,7 +351,7 @@ class MainActivity : SimpleActivity() {
         (drawable as LayerDrawable).findDrawableByLayerId(R.id.shortcut_plus_background).applyColorFilter(appIconColor)
         val bmp = drawable.convertToBitmap()
 
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, com.ncautomation.notes.pro.activities.MainActivity::class.java)
         intent.action = Intent.ACTION_VIEW
         intent.putExtra(NEW_CHECKLIST, true)
         return ShortcutInfo.Builder(this, SHORTCUT_NEW_CHECKLIST)
@@ -561,7 +563,7 @@ class MainActivity : SimpleActivity() {
 
     private fun openSearch() {
         isSearchActive = true
-        binding.searchWrapper.fadeIn()
+        binding.searchWrapper.root.fadeIn()
         showKeyboard(searchQueryET)
 
         currentNotesView()?.let { noteView ->
@@ -577,7 +579,7 @@ class MainActivity : SimpleActivity() {
     private fun closeSearch() {
         searchQueryET.text?.clear()
         isSearchActive = false
-        binding.searchWrapper.fadeOut()
+        binding.searchWrapper.root.fadeOut()
         hideKeyboard()
     }
 
@@ -638,25 +640,25 @@ class MainActivity : SimpleActivity() {
 
     private fun launchSettings() {
         hideKeyboard()
-        startActivity(Intent(applicationContext, SettingsActivity::class.java))
+        startActivity(Intent(applicationContext, com.ncautomation.notes.pro.activities.SettingsActivity::class.java))
     }
 
     private fun launchAbout() {
         val licenses = LICENSE_RTL
 
         val faqItems = arrayListOf(
-            FAQItem(com.simplemobiletools.commons.R.string.faq_1_title_commons, com.simplemobiletools.commons.R.string.faq_1_text_commons),
+            FAQItem(com.ncautomation.commons.R.string.faq_1_title_commons, com.ncautomation.commons.R.string.faq_1_text_commons),
             FAQItem(R.string.faq_1_title, R.string.faq_1_text)
         )
 
-        if (!resources.getBoolean(com.simplemobiletools.commons.R.bool.hide_google_relations)) {
-            faqItems.add(FAQItem(com.simplemobiletools.commons.R.string.faq_2_title_commons, com.simplemobiletools.commons.R.string.faq_2_text_commons))
-            faqItems.add(FAQItem(com.simplemobiletools.commons.R.string.faq_6_title_commons, com.simplemobiletools.commons.R.string.faq_6_text_commons))
-            faqItems.add(FAQItem(com.simplemobiletools.commons.R.string.faq_7_title_commons, com.simplemobiletools.commons.R.string.faq_7_text_commons))
-            faqItems.add(FAQItem(com.simplemobiletools.commons.R.string.faq_10_title_commons, com.simplemobiletools.commons.R.string.faq_10_text_commons))
+        if (!resources.getBoolean(com.ncautomation.commons.R.bool.hide_google_relations)) {
+            faqItems.add(FAQItem(com.ncautomation.commons.R.string.faq_2_title_commons, com.ncautomation.commons.R.string.faq_2_text_commons))
+            faqItems.add(FAQItem(com.ncautomation.commons.R.string.faq_6_title_commons, com.ncautomation.commons.R.string.faq_6_text_commons))
+            faqItems.add(FAQItem(com.ncautomation.commons.R.string.faq_7_title_commons, com.ncautomation.commons.R.string.faq_7_text_commons))
+            faqItems.add(FAQItem(com.ncautomation.commons.R.string.faq_10_title_commons, com.ncautomation.commons.R.string.faq_10_text_commons))
         }
 
-        startAboutActivity(R.string.app_name, licenses, BuildConfig.VERSION_NAME, faqItems, true)
+        startAboutActivity(R.string.app_name, licenses, com.ncautomation.notes.pro.BuildConfig.VERSION_NAME, faqItems, true)
     }
 
     private fun tryOpenFile() {
@@ -673,7 +675,7 @@ class MainActivity : SimpleActivity() {
                     putExtra(Intent.EXTRA_MIME_TYPES, mimetypes)
                     startActivityForResult(this, PICK_OPEN_FILE_INTENT)
                 } catch (e: ActivityNotFoundException) {
-                    toast(com.simplemobiletools.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
+                    toast(com.ncautomation.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
                 } catch (e: Exception) {
                     showErrorToast(e)
                 }
@@ -710,7 +712,7 @@ class MainActivity : SimpleActivity() {
     private fun checkFile(path: String, checkTitle: Boolean, onChecksPassed: (file: File) -> Unit) {
         val file = File(path)
         if (path.isMediaFile()) {
-            toast(com.simplemobiletools.commons.R.string.invalid_file_format)
+            toast(com.ncautomation.commons.R.string.invalid_file_format)
         } else if (file.length() > 1000 * 1000) {
             toast(R.string.file_too_large)
         } else if (checkTitle && mNotes.any { it.title.equals(path.getFilenameFromPath(), true) }) {
@@ -751,7 +753,7 @@ class MainActivity : SimpleActivity() {
                     if (realPath != null) {
                         openPath(realPath)
                     } else {
-                        com.simplemobiletools.commons.R.string.unknown_error_occurred
+                        com.ncautomation.commons.R.string.unknown_error_occurred
                     }
                 } else if (realPath != null && realPath != "") {
                     checkFile(realPath, false) {
@@ -848,7 +850,7 @@ class MainActivity : SimpleActivity() {
                     }
                 }
             } else {
-                toast(com.simplemobiletools.commons.R.string.no_storage_permissions)
+                toast(com.ncautomation.commons.R.string.no_storage_permissions)
             }
         }
     }
@@ -878,7 +880,7 @@ class MainActivity : SimpleActivity() {
                 try {
                     startActivityForResult(this, PICK_EXPORT_FILE_INTENT)
                 } catch (e: ActivityNotFoundException) {
-                    toast(com.simplemobiletools.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
+                    toast(com.ncautomation.commons.R.string.system_service_disabled, Toast.LENGTH_LONG)
                 } catch (e: NetworkErrorException) {
                     toast(getString(R.string.cannot_load_over_internet), Toast.LENGTH_LONG)
                 } catch (e: Exception) {
@@ -892,7 +894,7 @@ class MainActivity : SimpleActivity() {
         ExportFileDialog(this, mCurrentNote) {
             val textToExport = if (mCurrentNote.type == NoteType.TYPE_TEXT) getCurrentNoteText() else mCurrentNote.value
             if (textToExport == null || textToExport.isEmpty()) {
-                toast(com.simplemobiletools.commons.R.string.unknown_error_occurred)
+                toast(com.ncautomation.commons.R.string.unknown_error_occurred)
             } else if (mCurrentNote.type == NoteType.TYPE_TEXT) {
                 showExportFilePickUpdateDialog(it, textToExport)
             } else {
@@ -941,7 +943,7 @@ class MainActivity : SimpleActivity() {
     private fun exportNoteValueToFile(path: String, content: String, showSuccessToasts: Boolean, callback: ((success: Boolean) -> Unit)? = null) {
         try {
             if (File(path).isDirectory) {
-                toast(com.simplemobiletools.commons.R.string.name_taken)
+                toast(com.ncautomation.commons.R.string.name_taken)
                 return
             }
 
@@ -1119,7 +1121,7 @@ class MainActivity : SimpleActivity() {
             if (deleteFile) {
                 deleteFile(FileDirItem(note.path, note.title)) {
                     if (!it) {
-                        toast(com.simplemobiletools.commons.R.string.unknown_error_occurred)
+                        toast(com.ncautomation.commons.R.string.unknown_error_occurred)
                     }
                 }
             }
@@ -1172,7 +1174,7 @@ class MainActivity : SimpleActivity() {
         }
 
         val res = resources
-        val shareTitle = res.getString(com.simplemobiletools.commons.R.string.share_via)
+        val shareTitle = res.getString(com.ncautomation.commons.R.string.share_via)
         Intent().apply {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_SUBJECT, mCurrentNote.title)
@@ -1191,7 +1193,7 @@ class MainActivity : SimpleActivity() {
             val appIconColor = baseConfig.appIconColor
             (drawable as LayerDrawable).findDrawableByLayerId(R.id.shortcut_plus_background).applyColorFilter(appIconColor)
 
-            val intent = Intent(this, SplashActivity::class.java)
+            val intent = Intent(this, com.ncautomation.notes.pro.activities.SplashActivity::class.java)
             intent.action = Intent.ACTION_VIEW
             intent.putExtra(OPEN_NOTE_ID, note.id)
             intent.flags = intent.flags or Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NO_HISTORY
@@ -1207,7 +1209,7 @@ class MainActivity : SimpleActivity() {
     }
 
     private fun lockNote() {
-        ConfirmationDialog(this, "", R.string.locking_warning, com.simplemobiletools.commons.R.string.ok, com.simplemobiletools.commons.R.string.cancel) {
+        ConfirmationDialog(this, "", R.string.locking_warning, com.ncautomation.commons.R.string.ok, com.ncautomation.commons.R.string.cancel) {
             SecurityDialog(this, "", SHOW_ALL_TABS) { hash, type, success ->
                 if (success) {
                     mCurrentNote.protectionHash = hash
@@ -1283,7 +1285,7 @@ class MainActivity : SimpleActivity() {
             add(Release(67, R.string.release_67))
             add(Release(81, R.string.release_81))
             add(Release(86, R.string.release_86))
-            checkWhatsNew(this, BuildConfig.VERSION_CODE)
+            checkWhatsNew(this, com.ncautomation.notes.pro.BuildConfig.VERSION_CODE)
         }
     }
 

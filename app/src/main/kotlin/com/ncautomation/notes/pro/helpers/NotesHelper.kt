@@ -1,17 +1,17 @@
-package com.simplemobiletools.notes.pro.helpers
+package com.ncautomation.notes.pro.helpers
 
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
-import com.simplemobiletools.commons.activities.BaseSimpleActivity
-import com.simplemobiletools.commons.helpers.ExportResult
-import com.simplemobiletools.commons.helpers.PROTECTION_NONE
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import com.simplemobiletools.notes.pro.R
-import com.simplemobiletools.notes.pro.extensions.config
-import com.simplemobiletools.notes.pro.extensions.notesDB
-import com.simplemobiletools.notes.pro.models.Note
-import com.simplemobiletools.notes.pro.models.NoteType
+import com.ncautomation.commons.activities.BaseSimpleActivity
+import com.ncautomation.commons.helpers.ExportResult
+import com.ncautomation.commons.helpers.PROTECTION_NONE
+import com.ncautomation.commons.helpers.ensureBackgroundThread
+import com.ncautomation.notes.pro.R
+import com.ncautomation.notes.pro.extensions.config
+import com.ncautomation.notes.pro.extensions.notesDB
+import com.ncautomation.notes.pro.models.Note
+import com.ncautomation.notes.pro.models.NoteType
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.io.File

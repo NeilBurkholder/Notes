@@ -1,10 +1,10 @@
-package com.simplemobiletools.notes.pro.receivers
+package com.ncautomation.notes.pro.receivers
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import com.simplemobiletools.notes.pro.extensions.checkAndBackupNotesOnBoot
+import com.ncautomation.commons.helpers.ensureBackgroundThread
+import com.ncautomation.notes.pro.extensions.checkAndBackupNotesOnBoot
 
 class BootCompletedReceiver : BroadcastReceiver() {
 

@@ -1,10 +1,10 @@
-package com.simplemobiletools.notes.pro.interfaces
+package com.ncautomation.notes.pro.interfaces
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.simplemobiletools.notes.pro.models.Widget
+import com.ncautomation.notes.pro.models.Widget
 
 @Dao
 interface WidgetsDao {

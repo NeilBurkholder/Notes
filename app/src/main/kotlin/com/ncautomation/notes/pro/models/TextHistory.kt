@@ -1,4 +1,4 @@
-package com.simplemobiletools.notes.pro.models
+package com.ncautomation.notes.pro.models
 
 import java.util.*
 

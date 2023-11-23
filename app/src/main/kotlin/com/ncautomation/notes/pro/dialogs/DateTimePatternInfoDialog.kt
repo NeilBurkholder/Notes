@@ -1,16 +1,16 @@
-package com.simplemobiletools.notes.pro.dialogs
+package com.ncautomation.notes.pro.dialogs
 
-import com.simplemobiletools.commons.activities.BaseSimpleActivity
-import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
-import com.simplemobiletools.commons.extensions.setupDialogStuff
-import com.simplemobiletools.notes.pro.R
+import com.ncautomation.commons.activities.BaseSimpleActivity
+import com.ncautomation.commons.extensions.getAlertDialogBuilder
+import com.ncautomation.commons.extensions.setupDialogStuff
+import com.ncautomation.notes.pro.R
 
 class DateTimePatternInfoDialog(activity: BaseSimpleActivity) {
 
     init {
         val view = activity.layoutInflater.inflate(R.layout.datetime_pattern_info_layout, null)
         activity.getAlertDialogBuilder()
-            .setPositiveButton(com.simplemobiletools.commons.R.string.ok) { _, _ -> { } }
+            .setPositiveButton(com.ncautomation.commons.R.string.ok) { _, _ -> { } }
             .apply {
                 activity.setupDialogStuff(view, this)
             }

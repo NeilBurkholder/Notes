@@ -1,13 +1,13 @@
-package com.simplemobiletools.notes.pro.dialogs
+package com.ncautomation.notes.pro.dialogs
 
 import androidx.appcompat.app.AlertDialog
-import com.simplemobiletools.commons.dialogs.FilePickerDialog
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.notes.pro.R
-import com.simplemobiletools.notes.pro.activities.SimpleActivity
-import com.simplemobiletools.notes.pro.databinding.DialogExportFileBinding
-import com.simplemobiletools.notes.pro.extensions.config
-import com.simplemobiletools.notes.pro.models.Note
+import com.ncautomation.commons.dialogs.FilePickerDialog
+import com.ncautomation.commons.extensions.*
+import com.ncautomation.notes.pro.R
+import com.ncautomation.notes.pro.activities.SimpleActivity
+import com.ncautomation.notes.pro.databinding.DialogExportFileBinding
+import com.ncautomation.notes.pro.extensions.config
+import com.ncautomation.notes.pro.models.Note
 import java.io.File
 
 class ExportFileDialog(val activity: SimpleActivity, val note: Note, val callback: (exportPath: String) -> Unit) {
@@ -28,8 +28,8 @@ class ExportFileDialog(val activity: SimpleActivity, val note: Note, val callbac
         }
 
         activity.getAlertDialogBuilder()
-            .setPositiveButton(com.simplemobiletools.commons.R.string.ok, null)
-            .setNegativeButton(com.simplemobiletools.commons.R.string.cancel, null)
+            .setPositiveButton(com.ncautomation.commons.R.string.ok, null)
+            .setNegativeButton(com.ncautomation.commons.R.string.cancel, null)
             .apply {
                 activity.setupDialogStuff(binding.root, this, R.string.export_as_file) { alertDialog ->
                     alertDialog.showKeyboard(binding.fileName)
@@ -38,13 +38,13 @@ class ExportFileDialog(val activity: SimpleActivity, val note: Note, val callbac
                         val extension = binding.extension.value
 
                         if (filename.isEmpty()) {
-                            activity.toast(com.simplemobiletools.commons.R.string.filename_cannot_be_empty)
+                            activity.toast(com.ncautomation.commons.R.string.filename_cannot_be_empty)
                             return@setOnClickListener
                         }
 
                         val fullFilename = if (extension.isEmpty()) filename else "$filename.$extension"
                         if (!fullFilename.isAValidFilename()) {
-                            activity.toast(String.format(activity.getString(com.simplemobiletools.commons.R.string.filename_invalid_characters_placeholder, fullFilename)))
+                            activity.toast(String.format(activity.getString(com.ncautomation.commons.R.string.filename_invalid_characters_placeholder, fullFilename)))
                             return@setOnClickListener
                         }
 

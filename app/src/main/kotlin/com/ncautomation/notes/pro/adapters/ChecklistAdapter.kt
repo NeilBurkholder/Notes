@@ -1,4 +1,4 @@
-package com.simplemobiletools.notes.pro.adapters
+package com.ncautomation.notes.pro.adapters
 
 import android.graphics.Paint
 import android.graphics.drawable.Drawable
@@ -9,25 +9,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.simplemobiletools.commons.activities.BaseSimpleActivity
-import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
-import com.simplemobiletools.commons.extensions.applyColorFilter
-import com.simplemobiletools.commons.extensions.beVisibleIf
-import com.simplemobiletools.commons.extensions.getColoredDrawableWithColor
-import com.simplemobiletools.commons.extensions.removeBit
-import com.simplemobiletools.commons.helpers.SORT_BY_CUSTOM
-import com.simplemobiletools.commons.interfaces.ItemMoveCallback
-import com.simplemobiletools.commons.interfaces.ItemTouchHelperContract
-import com.simplemobiletools.commons.interfaces.StartReorderDragListener
-import com.simplemobiletools.commons.views.MyRecyclerView
-import com.simplemobiletools.notes.pro.R
-import com.simplemobiletools.notes.pro.databinding.ItemChecklistBinding
-import com.simplemobiletools.notes.pro.dialogs.RenameChecklistItemDialog
-import com.simplemobiletools.notes.pro.extensions.config
-import com.simplemobiletools.notes.pro.extensions.getPercentageFontSize
-import com.simplemobiletools.notes.pro.helpers.DONE_CHECKLIST_ITEM_ALPHA
-import com.simplemobiletools.notes.pro.interfaces.ChecklistItemsListener
-import com.simplemobiletools.notes.pro.models.ChecklistItem
+import com.ncautomation.commons.activities.BaseSimpleActivity
+import com.ncautomation.commons.adapters.MyRecyclerViewAdapter
+import com.ncautomation.commons.extensions.applyColorFilter
+import com.ncautomation.commons.extensions.beVisibleIf
+import com.ncautomation.commons.extensions.getColoredDrawableWithColor
+import com.ncautomation.commons.extensions.removeBit
+import com.ncautomation.commons.helpers.SORT_BY_CUSTOM
+import com.ncautomation.commons.interfaces.ItemMoveCallback
+import com.ncautomation.commons.interfaces.ItemTouchHelperContract
+import com.ncautomation.commons.interfaces.StartReorderDragListener
+import com.ncautomation.commons.views.MyRecyclerView
+import com.ncautomation.notes.pro.R
+import com.ncautomation.notes.pro.databinding.ItemChecklistBinding
+import com.ncautomation.notes.pro.dialogs.RenameChecklistItemDialog
+import com.ncautomation.notes.pro.extensions.config
+import com.ncautomation.notes.pro.extensions.getPercentageFontSize
+import com.ncautomation.notes.pro.helpers.DONE_CHECKLIST_ITEM_ALPHA
+import com.ncautomation.notes.pro.interfaces.ChecklistItemsListener
+import com.ncautomation.notes.pro.models.ChecklistItem
 import java.util.Collections
 
 class ChecklistAdapter(
@@ -108,12 +108,12 @@ class ChecklistAdapter(
     private fun initDrawables() {
         val res = activity.resources
         crossDrawable = res.getColoredDrawableWithColor(
-            com.simplemobiletools.commons.R.drawable.ic_cross_vector,
-            res.getColor(com.simplemobiletools.commons.R.color.md_red_700)
+            com.ncautomation.commons.R.drawable.ic_cross_vector,
+            res.getColor(com.ncautomation.commons.R.color.md_red_700)
         )
         checkDrawable = res.getColoredDrawableWithColor(
-            com.simplemobiletools.commons.R.drawable.ic_check_vector,
-            res.getColor(com.simplemobiletools.commons.R.color.md_green_700)
+            com.ncautomation.commons.R.drawable.ic_check_vector,
+            res.getColor(com.ncautomation.commons.R.color.md_green_700)
         )
     }
 

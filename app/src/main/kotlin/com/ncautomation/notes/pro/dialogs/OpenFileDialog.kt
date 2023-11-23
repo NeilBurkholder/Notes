@@ -1,16 +1,16 @@
-package com.simplemobiletools.notes.pro.dialogs
+package com.ncautomation.notes.pro.dialogs
 
 import androidx.appcompat.app.AlertDialog
-import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
-import com.simplemobiletools.commons.extensions.getFilenameFromPath
-import com.simplemobiletools.commons.extensions.humanizePath
-import com.simplemobiletools.commons.extensions.setupDialogStuff
-import com.simplemobiletools.commons.helpers.PROTECTION_NONE
-import com.simplemobiletools.notes.pro.R
-import com.simplemobiletools.notes.pro.activities.SimpleActivity
-import com.simplemobiletools.notes.pro.databinding.DialogOpenFileBinding
-import com.simplemobiletools.notes.pro.models.Note
-import com.simplemobiletools.notes.pro.models.NoteType
+import com.ncautomation.commons.extensions.getAlertDialogBuilder
+import com.ncautomation.commons.extensions.getFilenameFromPath
+import com.ncautomation.commons.extensions.humanizePath
+import com.ncautomation.commons.extensions.setupDialogStuff
+import com.ncautomation.commons.helpers.PROTECTION_NONE
+import com.ncautomation.notes.pro.R
+import com.ncautomation.notes.pro.activities.SimpleActivity
+import com.ncautomation.notes.pro.databinding.DialogOpenFileBinding
+import com.ncautomation.notes.pro.models.Note
+import com.ncautomation.notes.pro.models.NoteType
 import java.io.File
 
 class OpenFileDialog(val activity: SimpleActivity, val path: String, val callback: (note: Note) -> Unit) : AlertDialog.Builder(activity) {
@@ -22,8 +22,8 @@ class OpenFileDialog(val activity: SimpleActivity, val path: String, val callbac
         }
 
         activity.getAlertDialogBuilder()
-            .setPositiveButton(com.simplemobiletools.commons.R.string.ok, null)
-            .setNegativeButton(com.simplemobiletools.commons.R.string.cancel, null)
+            .setPositiveButton(com.ncautomation.commons.R.string.ok, null)
+            .setNegativeButton(com.ncautomation.commons.R.string.cancel, null)
             .apply {
                 activity.setupDialogStuff(binding.root, this, R.string.open_file) { alertDialog ->
                     dialog = alertDialog

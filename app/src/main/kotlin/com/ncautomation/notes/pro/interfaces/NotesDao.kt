@@ -1,7 +1,7 @@
-package com.simplemobiletools.notes.pro.interfaces
+package com.ncautomation.notes.pro.interfaces
 
 import androidx.room.*
-import com.simplemobiletools.notes.pro.models.Note
+import com.ncautomation.notes.pro.models.Note
 
 @Dao
 interface NotesDao {

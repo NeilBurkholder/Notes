@@ -1,4 +1,4 @@
-package com.simplemobiletools.notes.pro.fragments
+package com.ncautomation.notes.pro.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,20 +8,20 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.SORT_BY_CUSTOM
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import com.simplemobiletools.notes.pro.activities.SimpleActivity
-import com.simplemobiletools.notes.pro.adapters.ChecklistAdapter
-import com.simplemobiletools.notes.pro.databinding.FragmentChecklistBinding
-import com.simplemobiletools.notes.pro.dialogs.NewChecklistItemDialog
-import com.simplemobiletools.notes.pro.extensions.config
-import com.simplemobiletools.notes.pro.extensions.updateWidgets
-import com.simplemobiletools.notes.pro.helpers.NOTE_ID
-import com.simplemobiletools.notes.pro.helpers.NotesHelper
-import com.simplemobiletools.notes.pro.interfaces.ChecklistItemsListener
-import com.simplemobiletools.notes.pro.models.ChecklistItem
-import com.simplemobiletools.notes.pro.models.Note
+import com.ncautomation.commons.extensions.*
+import com.ncautomation.commons.helpers.SORT_BY_CUSTOM
+import com.ncautomation.commons.helpers.ensureBackgroundThread
+import com.ncautomation.notes.pro.activities.SimpleActivity
+import com.ncautomation.notes.pro.adapters.ChecklistAdapter
+import com.ncautomation.notes.pro.databinding.FragmentChecklistBinding
+import com.ncautomation.notes.pro.dialogs.NewChecklistItemDialog
+import com.ncautomation.notes.pro.extensions.config
+import com.ncautomation.notes.pro.extensions.updateWidgets
+import com.ncautomation.notes.pro.helpers.NOTE_ID
+import com.ncautomation.notes.pro.helpers.NotesHelper
+import com.ncautomation.notes.pro.interfaces.ChecklistItemsListener
+import com.ncautomation.notes.pro.models.ChecklistItem
+import com.ncautomation.notes.pro.models.Note
 import java.io.File
 
 class ChecklistFragment : NoteFragment(), ChecklistItemsListener {

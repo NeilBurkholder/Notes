@@ -1,4 +1,4 @@
-package com.simplemobiletools.notes.pro.databases
+package com.ncautomation.notes.pro.databases
 
 import android.content.Context
 import androidx.room.Database
@@ -6,14 +6,14 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.simplemobiletools.commons.helpers.PROTECTION_NONE
-import com.simplemobiletools.notes.pro.R
-import com.simplemobiletools.notes.pro.helpers.DEFAULT_WIDGET_TEXT_COLOR
-import com.simplemobiletools.notes.pro.interfaces.NotesDao
-import com.simplemobiletools.notes.pro.interfaces.WidgetsDao
-import com.simplemobiletools.notes.pro.models.Note
-import com.simplemobiletools.notes.pro.models.NoteType
-import com.simplemobiletools.notes.pro.models.Widget
+import com.ncautomation.commons.helpers.PROTECTION_NONE
+import com.ncautomation.notes.pro.R
+import com.ncautomation.notes.pro.helpers.DEFAULT_WIDGET_TEXT_COLOR
+import com.ncautomation.notes.pro.interfaces.NotesDao
+import com.ncautomation.notes.pro.interfaces.WidgetsDao
+import com.ncautomation.notes.pro.models.Note
+import com.ncautomation.notes.pro.models.NoteType
+import com.ncautomation.notes.pro.models.Widget
 import java.util.concurrent.Executors
 
 @Database(entities = [Note::class, Widget::class], version = 4)
@@ -28,7 +28,7 @@ abstract class NotesDatabase : RoomDatabase() {
         private var defaultWidgetBgColor = 0
 
         fun getInstance(context: Context): NotesDatabase {
-            defaultWidgetBgColor = context.resources.getColor(com.simplemobiletools.commons.R.color.default_widget_bg_color)
+            defaultWidgetBgColor = context.resources.getColor(com.ncautomation.commons.R.color.default_widget_bg_color)
             if (db == null) {
                 synchronized(NotesDatabase::class) {
                     if (db == null) {

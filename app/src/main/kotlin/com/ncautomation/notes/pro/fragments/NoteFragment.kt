@@ -1,17 +1,17 @@
-package com.simplemobiletools.notes.pro.fragments
+package com.ncautomation.notes.pro.fragments
 
 import android.util.TypedValue
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.PROTECTION_NONE
-import com.simplemobiletools.notes.pro.activities.MainActivity
-import com.simplemobiletools.notes.pro.extensions.config
-import com.simplemobiletools.notes.pro.extensions.getPercentageFontSize
-import com.simplemobiletools.notes.pro.helpers.NotesHelper
-import com.simplemobiletools.notes.pro.models.Note
+import com.ncautomation.commons.extensions.*
+import com.ncautomation.commons.helpers.PROTECTION_NONE
+import com.ncautomation.notes.pro.activities.MainActivity
+import com.ncautomation.notes.pro.extensions.config
+import com.ncautomation.notes.pro.extensions.getPercentageFontSize
+import com.ncautomation.notes.pro.helpers.NotesHelper
+import com.ncautomation.notes.pro.models.Note
 
 abstract class NoteFragment : Fragment() {
     protected var note: Note? = null
@@ -37,12 +37,12 @@ abstract class NoteFragment : Fragment() {
     protected fun saveNoteValue(note: Note, content: String?) {
         if (note.path.isEmpty()) {
             NotesHelper(requireActivity()).insertOrUpdateNote(note) {
-                (activity as? MainActivity)?.noteSavedSuccessfully(note.title)
+                (activity as? com.ncautomation.notes.pro.activities.MainActivity)?.noteSavedSuccessfully(note.title)
             }
         } else {
             if (content != null) {
                 val displaySuccess = activity?.config?.displaySuccess ?: false
-                (activity as? MainActivity)?.tryExportNoteValueToFile(note.path, note.title, content, displaySuccess)
+                (activity as? com.ncautomation.notes.pro.activities.MainActivity)?.tryExportNoteValueToFile(note.path, note.title, content, displaySuccess)
             }
         }
     }

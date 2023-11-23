@@ -1,11 +1,11 @@
-package com.simplemobiletools.notes.pro.models
+package com.ncautomation.notes.pro.models
 
 import android.content.Context
 import android.net.Uri
 import androidx.room.*
-import com.simplemobiletools.commons.extensions.isBiometricIdAvailable
-import com.simplemobiletools.commons.helpers.PROTECTION_FINGERPRINT
-import com.simplemobiletools.commons.helpers.PROTECTION_NONE
+import com.ncautomation.commons.extensions.isBiometricIdAvailable
+import com.ncautomation.commons.helpers.PROTECTION_FINGERPRINT
+import com.ncautomation.commons.helpers.PROTECTION_NONE
 import kotlinx.serialization.Serializable
 import java.io.File
 

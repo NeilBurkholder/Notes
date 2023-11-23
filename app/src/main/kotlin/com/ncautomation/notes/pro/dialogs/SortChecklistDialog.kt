@@ -1,16 +1,16 @@
-package com.simplemobiletools.notes.pro.dialogs
+package com.ncautomation.notes.pro.dialogs
 
-import com.simplemobiletools.commons.extensions.beGoneIf
-import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
-import com.simplemobiletools.commons.extensions.setupDialogStuff
-import com.simplemobiletools.commons.helpers.SORT_BY_CUSTOM
-import com.simplemobiletools.commons.helpers.SORT_BY_DATE_CREATED
-import com.simplemobiletools.commons.helpers.SORT_BY_TITLE
-import com.simplemobiletools.commons.helpers.SORT_DESCENDING
-import com.simplemobiletools.notes.pro.R
-import com.simplemobiletools.notes.pro.activities.SimpleActivity
-import com.simplemobiletools.notes.pro.databinding.DialogSortChecklistBinding
-import com.simplemobiletools.notes.pro.extensions.config
+import com.ncautomation.commons.extensions.beGoneIf
+import com.ncautomation.commons.extensions.getAlertDialogBuilder
+import com.ncautomation.commons.extensions.setupDialogStuff
+import com.ncautomation.commons.helpers.SORT_BY_CUSTOM
+import com.ncautomation.commons.helpers.SORT_BY_DATE_CREATED
+import com.ncautomation.commons.helpers.SORT_BY_TITLE
+import com.ncautomation.commons.helpers.SORT_DESCENDING
+import com.ncautomation.notes.pro.R
+import com.ncautomation.notes.pro.activities.SimpleActivity
+import com.ncautomation.notes.pro.databinding.DialogSortChecklistBinding
+import com.ncautomation.notes.pro.extensions.config
 
 class SortChecklistDialog(private val activity: SimpleActivity, private val callback: () -> Unit) {
     private val binding = DialogSortChecklistBinding.inflate(activity.layoutInflater)
@@ -24,10 +24,10 @@ class SortChecklistDialog(private val activity: SimpleActivity, private val call
         setupMoveUndoneChecklistItems()
 
         activity.getAlertDialogBuilder()
-            .setPositiveButton(com.simplemobiletools.commons.R.string.ok) { _, _ -> dialogConfirmed() }
-            .setNegativeButton(com.simplemobiletools.commons.R.string.cancel, null)
+            .setPositiveButton(com.ncautomation.commons.R.string.ok) { _, _ -> dialogConfirmed() }
+            .setNegativeButton(com.ncautomation.commons.R.string.cancel, null)
             .apply {
-                activity.setupDialogStuff(view, this, com.simplemobiletools.commons.R.string.sort_by)
+                activity.setupDialogStuff(view, this, com.ncautomation.commons.R.string.sort_by)
             }
     }
 
@@ -36,8 +36,8 @@ class SortChecklistDialog(private val activity: SimpleActivity, private val call
         fieldRadio.setOnCheckedChangeListener { group, checkedId ->
             val isCustomSorting = checkedId == binding.sortingDialogRadioCustom.id
             binding.sortingDialogRadioOrder.beGoneIf(isCustomSorting)
-            binding.sortingDialogOrderDivider.beGoneIf(isCustomSorting)
-            binding.moveUndoneChecklistItemsDivider.beGoneIf(isCustomSorting)
+            binding.sortingDialogOrderDivider.root.beGoneIf(isCustomSorting)
+            binding.moveUndoneChecklistItemsDivider.root.beGoneIf(isCustomSorting)
             binding.settingsMoveUndoneChecklistItemsHolder.beGoneIf(isCustomSorting)
         }
 

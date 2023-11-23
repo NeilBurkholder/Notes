@@ -1,4 +1,4 @@
--keep class com.simplemobiletools.notes.pro.models.* {
+-keep class com.ncautomation.notes.pro.models.* {
     <fields>;
 }
 

@@ -1,4 +1,4 @@
-package com.simplemobiletools.notes.pro.helpers
+package com.ncautomation.notes.pro.helpers
 
 import java.text.Collator
 

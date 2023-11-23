@@ -1,4 +1,4 @@
-package com.simplemobiletools.notes.pro.fragments
+package com.ncautomation.notes.pro.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -19,22 +19,22 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.viewbinding.ViewBinding
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.views.MyEditText
-import com.simplemobiletools.commons.views.MyTextView
-import com.simplemobiletools.notes.pro.R
-import com.simplemobiletools.notes.pro.activities.MainActivity
-import com.simplemobiletools.notes.pro.databinding.FragmentTextBinding
-import com.simplemobiletools.notes.pro.databinding.NoteViewHorizScrollableBinding
-import com.simplemobiletools.notes.pro.databinding.NoteViewStaticBinding
-import com.simplemobiletools.notes.pro.extensions.config
-import com.simplemobiletools.notes.pro.extensions.getPercentageFontSize
-import com.simplemobiletools.notes.pro.extensions.updateWidgets
-import com.simplemobiletools.notes.pro.helpers.MyMovementMethod
-import com.simplemobiletools.notes.pro.helpers.NOTE_ID
-import com.simplemobiletools.notes.pro.helpers.NotesHelper
-import com.simplemobiletools.notes.pro.models.TextHistory
-import com.simplemobiletools.notes.pro.models.TextHistoryItem
+import com.ncautomation.commons.extensions.*
+import com.ncautomation.commons.views.MyEditText
+import com.ncautomation.commons.views.MyTextView
+import com.ncautomation.notes.pro.R
+import com.ncautomation.notes.pro.activities.MainActivity
+import com.ncautomation.notes.pro.databinding.FragmentTextBinding
+import com.ncautomation.notes.pro.databinding.NoteViewHorizScrollableBinding
+import com.ncautomation.notes.pro.databinding.NoteViewStaticBinding
+import com.ncautomation.notes.pro.extensions.config
+import com.ncautomation.notes.pro.extensions.getPercentageFontSize
+import com.ncautomation.notes.pro.extensions.updateWidgets
+import com.ncautomation.notes.pro.helpers.MyMovementMethod
+import com.ncautomation.notes.pro.helpers.NOTE_ID
+import com.ncautomation.notes.pro.helpers.NotesHelper
+import com.ncautomation.notes.pro.models.TextHistory
+import com.ncautomation.notes.pro.models.TextHistoryItem
 import java.io.File
 
 // text history handling taken from https://gist.github.com/zeleven/0cfa738c1e8b65b23ff7df1fc30c9f7e
@@ -55,7 +55,7 @@ class TextFragment : NoteFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentTextBinding.inflate(inflater, container, false)
         noteId = requireArguments().getLong(NOTE_ID, 0L)
-        moveXThreshold = resources.getDimension(com.simplemobiletools.commons.R.dimen.activity_margin).toInt()
+        moveXThreshold = resources.getDimension(com.ncautomation.commons.R.dimen.activity_margin).toInt()
         retainInstance = true
 
         innerBinding = if (config!!.enableLineWrap) {
@@ -114,7 +114,7 @@ class TextFragment : NoteFragment() {
         if (menuVisible && noteId != 0L) {
             val currentText = getCurrentNoteViewText()
             if (currentText != null) {
-                (activity as MainActivity).currentNoteTextChanged(currentText, isUndoAvailable(), isRedoAvailable())
+                (activity as com.ncautomation.notes.pro.activities.MainActivity).currentNoteTextChanged(currentText, isUndoAvailable(), isRedoAvailable())
             }
         }
     }
@@ -143,7 +143,7 @@ class TextFragment : NoteFragment() {
 
             val fileContents = note!!.getNoteStoredValue(context)
             if (fileContents == null) {
-                (activity as MainActivity).deleteNote(false, note!!)
+                (activity as com.ncautomation.notes.pro.activities.MainActivity).deleteNote(false, note!!)
                 return
             }
 
@@ -338,7 +338,7 @@ class TextFragment : NoteFragment() {
         override fun afterTextChanged(editable: Editable) {
             val text = editable.toString()
             setWordCounter(text)
-            (activity as MainActivity).currentNoteTextChanged(text, isUndoAvailable(), isRedoAvailable())
+            (activity as com.ncautomation.notes.pro.activities.MainActivity).currentNoteTextChanged(text, isUndoAvailable(), isRedoAvailable())
         }
     }
 

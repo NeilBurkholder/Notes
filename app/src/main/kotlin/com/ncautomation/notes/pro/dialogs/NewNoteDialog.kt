@@ -1,16 +1,16 @@
-package com.simplemobiletools.notes.pro.dialogs
+package com.ncautomation.notes.pro.dialogs
 
 import android.app.Activity
 import android.content.DialogInterface.BUTTON_POSITIVE
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.PROTECTION_NONE
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import com.simplemobiletools.notes.pro.R
-import com.simplemobiletools.notes.pro.databinding.DialogNewNoteBinding
-import com.simplemobiletools.notes.pro.extensions.config
-import com.simplemobiletools.notes.pro.extensions.notesDB
-import com.simplemobiletools.notes.pro.models.Note
-import com.simplemobiletools.notes.pro.models.NoteType
+import com.ncautomation.commons.extensions.*
+import com.ncautomation.commons.helpers.PROTECTION_NONE
+import com.ncautomation.commons.helpers.ensureBackgroundThread
+import com.ncautomation.notes.pro.R
+import com.ncautomation.notes.pro.databinding.DialogNewNoteBinding
+import com.ncautomation.notes.pro.extensions.config
+import com.ncautomation.notes.pro.extensions.notesDB
+import com.ncautomation.notes.pro.models.Note
+import com.ncautomation.notes.pro.models.NoteType
 
 class NewNoteDialog(val activity: Activity, title: String? = null, val setChecklistAsDefault: Boolean, callback: (note: Note) -> Unit) {
     init {
@@ -27,8 +27,8 @@ class NewNoteDialog(val activity: Activity, title: String? = null, val setCheckl
         binding.lockedNoteTitle.setText(title)
 
         activity.getAlertDialogBuilder()
-            .setPositiveButton(com.simplemobiletools.commons.R.string.ok, null)
-            .setNegativeButton(com.simplemobiletools.commons.R.string.cancel, null)
+            .setPositiveButton(com.ncautomation.commons.R.string.ok, null)
+            .setNegativeButton(com.ncautomation.commons.R.string.cancel, null)
             .apply {
                 activity.setupDialogStuff(binding.root, this, R.string.new_note) { alertDialog ->
                     alertDialog.showKeyboard(binding.lockedNoteTitle)

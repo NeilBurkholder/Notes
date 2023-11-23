@@ -1,4 +1,4 @@
-package com.simplemobiletools.notes.pro.adapters
+package com.ncautomation.notes.pro.adapters
 
 import android.content.Context
 import android.content.Intent
@@ -6,20 +6,20 @@ import android.graphics.Paint
 import android.view.View
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
-import com.simplemobiletools.commons.extensions.adjustAlpha
-import com.simplemobiletools.commons.extensions.setText
-import com.simplemobiletools.commons.extensions.setTextSize
-import com.simplemobiletools.commons.helpers.SORT_BY_CUSTOM
-import com.simplemobiletools.commons.helpers.WIDGET_TEXT_COLOR
-import com.simplemobiletools.notes.pro.R
-import com.simplemobiletools.notes.pro.R.id.widget_text_holder
-import com.simplemobiletools.notes.pro.extensions.config
-import com.simplemobiletools.notes.pro.extensions.getPercentageFontSize
-import com.simplemobiletools.notes.pro.extensions.notesDB
-import com.simplemobiletools.notes.pro.helpers.*
-import com.simplemobiletools.notes.pro.models.ChecklistItem
-import com.simplemobiletools.notes.pro.models.Note
-import com.simplemobiletools.notes.pro.models.NoteType
+import com.ncautomation.commons.extensions.adjustAlpha
+import com.ncautomation.commons.extensions.setText
+import com.ncautomation.commons.extensions.setTextSize
+import com.ncautomation.commons.helpers.SORT_BY_CUSTOM
+import com.ncautomation.commons.helpers.WIDGET_TEXT_COLOR
+import com.ncautomation.notes.pro.R
+import com.ncautomation.notes.pro.R.id.widget_text_holder
+import com.ncautomation.notes.pro.extensions.config
+import com.ncautomation.notes.pro.extensions.getPercentageFontSize
+import com.ncautomation.notes.pro.extensions.notesDB
+import com.ncautomation.notes.pro.helpers.*
+import com.ncautomation.notes.pro.models.ChecklistItem
+import com.ncautomation.notes.pro.models.Note
+import com.ncautomation.notes.pro.models.NoteType
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 

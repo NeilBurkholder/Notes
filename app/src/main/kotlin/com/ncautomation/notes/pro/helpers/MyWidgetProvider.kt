@@ -1,4 +1,4 @@
-package com.simplemobiletools.notes.pro.helpers
+package com.ncautomation.notes.pro.helpers
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -7,18 +7,18 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.widget.RemoteViews
-import com.simplemobiletools.commons.extensions.applyColorFilter
-import com.simplemobiletools.commons.extensions.getLaunchIntent
-import com.simplemobiletools.commons.extensions.setText
-import com.simplemobiletools.commons.extensions.setVisibleIf
-import com.simplemobiletools.commons.helpers.WIDGET_TEXT_COLOR
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import com.simplemobiletools.notes.pro.R
-import com.simplemobiletools.notes.pro.activities.SplashActivity
-import com.simplemobiletools.notes.pro.extensions.notesDB
-import com.simplemobiletools.notes.pro.extensions.widgetsDB
-import com.simplemobiletools.notes.pro.models.Widget
-import com.simplemobiletools.notes.pro.services.WidgetService
+import com.ncautomation.commons.extensions.applyColorFilter
+import com.ncautomation.commons.extensions.getLaunchIntent
+import com.ncautomation.commons.extensions.setText
+import com.ncautomation.commons.extensions.setVisibleIf
+import com.ncautomation.commons.helpers.WIDGET_TEXT_COLOR
+import com.ncautomation.commons.helpers.ensureBackgroundThread
+import com.ncautomation.notes.pro.R
+import com.ncautomation.notes.pro.activities.SplashActivity
+import com.ncautomation.notes.pro.extensions.notesDB
+import com.ncautomation.notes.pro.extensions.widgetsDB
+import com.ncautomation.notes.pro.models.Widget
+import com.ncautomation.notes.pro.services.WidgetService
 
 class MyWidgetProvider : AppWidgetProvider() {
     private fun setupAppOpenIntent(context: Context, views: RemoteViews, id: Int, widget: Widget) {

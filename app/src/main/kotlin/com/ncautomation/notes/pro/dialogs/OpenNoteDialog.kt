@@ -1,16 +1,16 @@
-package com.simplemobiletools.notes.pro.dialogs
+package com.ncautomation.notes.pro.dialogs
 
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.simplemobiletools.commons.activities.BaseSimpleActivity
-import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
-import com.simplemobiletools.commons.extensions.setupDialogStuff
-import com.simplemobiletools.commons.views.AutoStaggeredGridLayoutManager
-import com.simplemobiletools.notes.pro.R
-import com.simplemobiletools.notes.pro.adapters.OpenNoteAdapter
-import com.simplemobiletools.notes.pro.databinding.DialogOpenNoteBinding
-import com.simplemobiletools.notes.pro.helpers.NotesHelper
-import com.simplemobiletools.notes.pro.models.Note
+import com.ncautomation.commons.activities.BaseSimpleActivity
+import com.ncautomation.commons.extensions.getAlertDialogBuilder
+import com.ncautomation.commons.extensions.setupDialogStuff
+import com.ncautomation.commons.views.AutoStaggeredGridLayoutManager
+import com.ncautomation.notes.pro.R
+import com.ncautomation.notes.pro.adapters.OpenNoteAdapter
+import com.ncautomation.notes.pro.databinding.DialogOpenNoteBinding
+import com.ncautomation.notes.pro.helpers.NotesHelper
+import com.ncautomation.notes.pro.models.Note
 
 class OpenNoteDialog(val activity: BaseSimpleActivity, val callback: (checkedId: Long, newNote: Note?) -> Unit) {
     private var dialog: AlertDialog? = null
@@ -41,7 +41,7 @@ class OpenNoteDialog(val activity: BaseSimpleActivity, val callback: (checkedId:
         }
 
         activity.getAlertDialogBuilder()
-            .setNegativeButton(com.simplemobiletools.commons.R.string.cancel, null)
+            .setNegativeButton(com.ncautomation.commons.R.string.cancel, null)
             .apply {
                 activity.setupDialogStuff(binding.root, this, R.string.open_note) { alertDialog ->
                     dialog = alertDialog

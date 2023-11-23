@@ -1,7 +1,7 @@
-package com.simplemobiletools.notes.pro.activities
+package com.ncautomation.notes.pro.activities
 
-import com.simplemobiletools.commons.activities.BaseSimpleActivity
-import com.simplemobiletools.notes.pro.R
+import com.ncautomation.commons.activities.BaseSimpleActivity
+import com.ncautomation.notes.pro.R
 
 open class SimpleActivity : BaseSimpleActivity() {
     override fun getAppIconIDs() = arrayListOf(
